@@ -1,0 +1,1 @@
+Scraper tool for Gelbooru, this tool will prioritize the *source* linked in the post. If supported and the source still exists, it will attempt to download the original quality image/video from the source otherwise it will download original from Gelbooru.
