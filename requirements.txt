@@ -16,7 +16,7 @@ pyppeteer==2.0.0
 pyquery==2.0.0
 requests==2.32.3
 requests-html==0.10.0
-selenium==4.23.1
+selenium==4.25.0
 soupsieve==2.5
 tqdm==4.66.5
 typing_extensions==4.12.2
