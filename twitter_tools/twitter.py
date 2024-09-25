@@ -9,7 +9,6 @@ handler = logging.StreamHandler()
 logger.addHandler(handler)
 
 chrome_location = "/usr/bin/chromedriver"
-chrome_driver_binary = "/usr/bin/chromedriver"
 firefox_location = "/snap/firefox/current/usr/lib/firefox/firefox"
 
 options = webdriver.ChromeOptions()
@@ -88,6 +87,7 @@ def SaveImage(folder, name, data):
     with open(save_location, "wb") as fp:
         print(save_location)
         fp.write(data)
+        fp.close()
     return
 
 Main(sys.argv)
