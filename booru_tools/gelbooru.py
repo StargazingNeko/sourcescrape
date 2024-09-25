@@ -1,6 +1,6 @@
-import requests, json, re, os, time, ast, random
-import pixiv_tools as pixiv
-from requests_html import HTMLSession
+import requests, json, re, time, random
+from .. import pixiv_tools as pixiv
+from .. import twitter_tools as twitter
 from pathlib import Path
 
 def GetGelbooruPosts(tags = "", limit = 1):
@@ -27,7 +27,7 @@ def main():
       f.close
 
       for item in source:
-           if(re.search(r"pixiv", item)):
+            if(re.search(r"pixiv", item)):
                 id = re.search(r"([^\/]+$)", item)
                 url = pixiv.ScrapePixiv(item, id[0])
                 print("return URL: ")
@@ -37,7 +37,9 @@ def main():
                     fp.write(response.content)
                 
                 time.sleep(random.randrange(1,5))
-           else:
+            elif(re.search(r"twitter", item)):
+                twitter.Main(item)     
+            else:
                 print(False)
 
 main()
