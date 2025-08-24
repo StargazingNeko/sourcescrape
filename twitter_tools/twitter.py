@@ -49,11 +49,7 @@ def Run(args):
             cleaned_photo_link.append(img_link)
             SaveImage("["+userHandle+"]"+userName, re.search(regex_filename, img_link)[1], requests.get(img_link).content)
 
-
-
-
-
-    End()
+    browser.quit()
 
 def GetUserInfo(in_soup):
     user = []
@@ -64,9 +60,6 @@ def GetUserInfo(in_soup):
                 user.append(text.get_text())
 
     return user[0], user[3]
-
-def End():
-    browser.quit()
 
 def SaveImage(folder, name, data):
     folderPath = "../downloads/twitter/"+folder

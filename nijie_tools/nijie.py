@@ -35,6 +35,7 @@ def Login():
 def GetImages(url):
     Login()
     image_links = []
+    browser.implicitly_wait(30)
     browser.get(url)
     artist = GetArtistName()
     gallery = browser.find_element(By.ID, "gallery")
@@ -43,7 +44,8 @@ def GetImages(url):
     if illust_id != None:
         browser.get(popup_page+illust_id)
         for image in browser.find_element(By.ID, "img_window").find_elements(By.TAG_NAME, "img"):
-            image_links.append(image.get_attribute("src"))
+            if image.get_attribute("src") != "https://nijie.info/pic/filter/width/1.png":
+                image_links.append(image.get_attribute("src"))
     else:
         video = img.find_element(By.TAG_NAME, "video")
         illust_id = video.get_attribute("illust_id")
