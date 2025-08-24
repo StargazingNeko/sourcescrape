@@ -10,10 +10,6 @@ def ScrapePixiv(url, id):
     r = _HtmlSession.get(url, headers=GetHeaders(), cookies=GetCookies())
     jstring = json.loads(r.html.find('#meta-preload-data')[0].attrs['content'])
 
-    f = open("pixiv_auth", "a")
-    if(os.stat("pixiv_auth").st_size == 0):
-       f.close()
-
     return jstring['illust'][str(id)]["pageCount"], jstring['illust'][str(id)]['urls']['original'], jstring['illust'][str(id)]["userId"], jstring['illust'][str(id)]["userName"]
 
 def GetHeaders():
