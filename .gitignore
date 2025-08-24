@@ -676,10 +676,12 @@ FodyWeavers.xsd
 # End of https://www.toptal.com/developers/gitignore/api/python,visualstudio,visualstudiocode,jetbrains+all
 
 test.py
-pixiv_tools/cookies
-pixiv_cookies
-twitter_tools/cookies
-twitter_cookies
-out.txt
-pixiv_tools/test.json
-nijie_tools/cookies
+cookies
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.mp4
+*.webm
+*.txt
+*.json
