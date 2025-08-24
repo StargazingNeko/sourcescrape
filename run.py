@@ -1,12 +1,12 @@
 import sys, subprocess
 python_bin = "venv/bin/python"
 
-def run_tool(path, args):
+def run_tool(path, args, count = 0):
     subprocess.run([python_bin, path, args])
 
 def main(args):
     if str(args[1]).lower() == "booru":
-        run_tool("booru_tools/gelbooru.py")
+        run_tool("booru_tools/gelbooru.py", "")
         return
     elif str(args[1]).lower() == "pixiv":
         run_tool("pixiv_tools/pixiv.py", str(args[2]))
