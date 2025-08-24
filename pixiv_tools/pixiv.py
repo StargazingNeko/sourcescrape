@@ -26,7 +26,7 @@ def GetHeaders():
     return headers
 
 def GetCookies():
-     cookies = ast.literal_eval(Path("pixiv_tools/cookies").read_text())
+     cookies = ast.literal_eval(Path("cookies").read_text())
      cookiejar = requests.utils.cookiejar_from_dict(cookies)
      return cookiejar
 
@@ -45,9 +45,9 @@ def main(args):
     id = re.search(r"([^\/]+$)", url)[0]
     page_count, illust, artist_id, artist_name = ScrapePixiv(url, id)
 
-    folder_path = "downloads/pixiv/["+artist_id+"] "+artist_name
+    folder_path = "../downloads/pixiv/["+artist_id+"] "+artist_name
     if os.path.exists(folder_path) != True:
-        Path(folder_path).mkdir()
+        Path(folder_path).mkdir(parents=True, exist_ok=True)
 
     if page_count == 1:
         data = requests.get(illust, headers=GetHeaders(), cookies=GetCookies())
