@@ -60,8 +60,7 @@ def GetArtistName():
 
 def SaveImages(image_links, artist, illust_id):
     folderPath = "../downloads/nijie/"+artist+"/"+illust_id+"/"
-    p = Path(folderPath)
-    p.mkdir(parents=True, exist_ok=True)
+    Path(folderPath).mkdir(parents=True, exist_ok=True)
 
     for image in image_links:
         fn, fe= FileInfo(image_link=image)

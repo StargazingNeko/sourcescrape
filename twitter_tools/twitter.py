@@ -8,11 +8,7 @@ logger.setLevel(logging.ERROR)
 handler = logging.StreamHandler()
 logger.addHandler(handler)
 
-chrome_location = "/usr/bin/chromedriver"
-firefox_location = "/snap/firefox/current/usr/lib/firefox/firefox"
-
 options = webdriver.ChromeOptions()
-options.binary_location = chrome_location
 options.add_argument("--headless")
 options.add_argument("user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36")
 options.add_argument("start-maximized")
@@ -51,7 +47,7 @@ def Run(args):
         print(img_link)
         if img_link not in cleaned_photo_link:
             cleaned_photo_link.append(img_link)
-            SaveImage("downloads/twitter/["+userHandle+"]"+userName, re.search(regex_filename, img_link)[1], requests.get(img_link).content)
+            SaveImage("["+userHandle+"]"+userName, re.search(regex_filename, img_link)[1], requests.get(img_link).content)
 
 
 
@@ -73,17 +69,10 @@ def End():
     browser.quit()
 
 def SaveImage(folder, name, data):
-    if os.path.exists("downloads/twitter") != True:
-        Path("downloads/twitter").mkdir()
-        Path(folder).mkdir()
-    elif os.path.exists(folder) != True:
-        print(folder)
-        Path(folder).mkdir()
-    else:
-        print("Location exists.")
+    folderPath = "../downloads/twitter/"+folder
+    Path(folderPath).mkdir(parents=True, exist_ok=True)
     
-    save_location = folder+"/"+name
-
+    save_location = folderPath+"/"+name
     with open(save_location, "wb") as fp:
         print(save_location)
         fp.write(data)
