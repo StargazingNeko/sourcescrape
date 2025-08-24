@@ -35,9 +35,9 @@ print(click)
 time.sleep(10)
 browser.save_screenshot("ss.png")
 cookie = json.dumps(browser.get_cookie("PHPSESSID"), indent=4)
-with open("cookies", "w") as file:
+with open("cookies.json", "w") as file:
     file.write(cookie)
     file.close()
 
-browser.quit()
 #browser.find_element(By.XPATH, '//*[@id="app-mount-point"]/div/div/div[4]/div[1]').screenshot("ss.png")
+browser.quit()
